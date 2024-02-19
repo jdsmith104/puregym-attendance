@@ -18,7 +18,7 @@ def main(email: str, pin: str, logger: logging.Logger):
 
     run = True
 
-    logger.debug(HEADER)
+    logger.info(HEADER)
 
     while run:
         try:
