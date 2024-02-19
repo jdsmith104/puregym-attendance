@@ -6,13 +6,30 @@ puregym-attendance is a Python client to query the PureGym Mobile API for live g
 
 TextDistance -- pip install textdistance
 
-## Usage
+## Setup
+``` sh
+python3 -m venv .venv
+source .venv/vin/activate
+python3 -m pip install -r requirements.txt 
+```
 
-```python
-puregym.py [email] [pin]
+Create `credentials.json` in the root directory. This is picked up by `server.py` and should not be tracked.
+``` json
+// credentials.json
+{
+    "email": "john@email.com",
+    "pin": "31415926"
+}
+```
 
-Optional Arguments
---gym [gym name OR gym ID] (defaults to puregym home gym)
+## Running the server
+``` sh
+python3 server.py
+```
+
+## Getting the list of all gyms
+``` sh
+python3 update_all_gyms.py
 ```
 
 ## Contributing

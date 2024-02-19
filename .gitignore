@@ -1,4 +1,7 @@
-logs/*
-credentials.json
-.vscode/*
 *.pyc
+
+logs/*
+.vscode/*
+
+all_gyms.json
+credentials.json
