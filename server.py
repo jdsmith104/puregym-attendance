@@ -7,7 +7,7 @@ import sys
 import datetime
 
 TARGET_GYM_IDS = [339, 286, 296, 168, 120, 222, 129]
-POLL_INTERVAL = 27
+POLL_INTERVAL = 270
 HEADER="datetime,"+",".join(map(str, TARGET_GYM_IDS))
 LOG_LEVEL = logging.INFO
 
