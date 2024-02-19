@@ -10,6 +10,7 @@ TARGET_GYM_IDS = [339, 286, 296, 168, 120, 222, 129]
 POLL_INTERVAL = 270
 HEADER="datetime,"+",".join(map(str, TARGET_GYM_IDS))
 LOG_LEVEL = logging.INFO
+LOG_DIR = "logs"
 
 def main(email: str, pin: str, logger: logging.Logger):
     
@@ -35,7 +36,11 @@ def main(email: str, pin: str, logger: logging.Logger):
                 os._exit(130)
 
 def setup_logging() -> logging.Logger:
-    logging.basicConfig(filename="logs/log_"+time.strftime("%Y%m%d-%H%M%S"),
+    # Create directory for logs if it does not exist 
+    logfile_path = LOG_DIR+"/log_"+time.strftime("%Y%m%d-%H%M%S")
+    os.makedirs(os.path.dirname(logfile_path), exist_ok=True)
+    
+    logging.basicConfig(filename=logfile_path,
                     filemode='a',
                     format='%(asctime)s.%(msecs)d %(name)s %(levelname)s %(message)s',
                     datefmt='%H:%M:%S',
