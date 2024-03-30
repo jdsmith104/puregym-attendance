@@ -65,7 +65,11 @@ def run(email: str, pin: str, logger: logging.Logger):
             time.sleep(POLL_INTERVAL)
         except HTTPError as e:
             logger.error(f"{e} and response={e.response}")
-            time.sleep(POLL_INTERVAL*2)
+            time.sleep(POLL_INTERVAL*3)
+        except ConnectionError as e:
+            logger.error(f"{e} and response={e.response}")
+            time.sleep(POLL_INTERVAL*3)
+
         except KeyboardInterrupt:
             logger.info('\nStopping server')
             run = False
