@@ -1,4 +1,4 @@
-from requests import HTTPError
+import requests
 import puregym
 import json
 import logging
@@ -63,13 +63,12 @@ def run(email: str, pin: str, logger: logging.Logger):
 
             # wait
             time.sleep(POLL_INTERVAL)
-        except HTTPError as e:
+        except requests.HTTPError as e:
             logger.error(f"{e} and response={e.response}")
             time.sleep(POLL_INTERVAL*3)
-        except ConnectionError as e:
+        except requests.exceptions.ConnectionError as e:
             logger.error(f"{e} and response={e.response}")
             time.sleep(POLL_INTERVAL*3)
-
         except KeyboardInterrupt:
             logger.info('\nStopping server')
             run = False
